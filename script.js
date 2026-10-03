@@ -1,19 +1,13 @@
-/* ============================================================
-   ATLAS · Bestiario Digital — v2.0
-   Navegación / Parallax premium / Ripple / Focus states
-   ============================================================ */
 
 (function () {
   'use strict';
 
   if (!document.querySelector('.screens-root')) return;
 
-  /* ---------- Referencias ---------- */
   const screens = document.querySelectorAll('.screen');
   const gotoBtns = document.querySelectorAll('[data-goto]');
   const atmosphere = document.querySelector('.atmosphere');
 
-  /* ---------- Navegación SPA entre screens ---------- */
   function goToScreen(name) {
     const target = document.querySelector(`.screen[data-screen="${name}"]`);
     if (!target) return;
@@ -57,7 +51,6 @@
     });
   });
 
-  /* ---------- Hash inicial ---------- */
   if (window.location.hash) {
     const initial = window.location.hash.replace('#', '');
     if (['landing', 'login', 'register'].includes(initial)) {
@@ -98,7 +91,6 @@
       .map((l) => ({ el: document.querySelector(l.sel), tx: l.tx, ty: l.ty }))
       .filter((o) => o.el);
 
-    /* Fotos de landing */
     const photoFox = document.querySelector('.creature-fox');
     const photoOwl = document.querySelector('.creature-owl');
 
@@ -131,7 +123,6 @@
     }, { passive: true });
   }
 
-  /* ---------- Ripple premium en botones ---------- */
   document.querySelectorAll('.btn').forEach((btn) => {
     btn.addEventListener('click', function (e) {
       const rect = this.getBoundingClientRect();
@@ -149,7 +140,6 @@
     });
   });
 
-  /* ---------- Focus / Validación visual suave en inputs ---------- */
   document.querySelectorAll('.field-input input').forEach((inp) => {
     inp.addEventListener('focus', function () {
       this.parentElement.classList.add('is-focused');
@@ -164,7 +154,6 @@
     });
   });
 
-  /* ---------- Entrada escalonada al cargar (landing) ---------- */
   document.addEventListener('DOMContentLoaded', () => {
     const landing = document.querySelector('.screen-landing.active');
     if (!landing) return;
@@ -177,6 +166,13 @@
 
   const page = document.querySelector('[data-page="explorer"]');
   if (!page) return;
+
+  if (!window.localStorage.getItem('token')) {
+    window.localStorage.removeItem('user');
+    window.localStorage.removeItem('currentUser');
+    window.location.replace('index.html#login');
+    return;
+  }
 
   const API_ROOT = window.ATLAS_API_ROOT || 'http://localhost:3000';
   const INATURALIST_API = 'https://api.inaturalist.org/v1';
