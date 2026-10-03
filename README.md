@@ -4,7 +4,7 @@ ATLAS le sirve a quien explora la biodiversidad para guardar y organizar criatur
 
 ## Demo
 
-- App: pendiente de despliegue en Vercel
+- App: https://atlas-tu-enciclopedia-de-animalitos.vercel.app
 - API: https://atlas-tu-enciclopedia-de-animalitos.onrender.com
 - Cuenta demo local: `atlas.demo@example.test` / `Atlas-Demo-Only-2026!` (cuenta de prueba sin rol admin; cambia o elimina esta cuenta antes de publicar la base de datos)
 
@@ -81,11 +81,11 @@ La API queda en `http://localhost:3000`. Para abrir la interfaz, sirve la carpet
 
 ## Despliegue
 
-La API está desplegada en Render. Falta desplegar la interfaz en Vercel y completar CORS con su dominio.
+La interfaz está desplegada en Vercel y la API en Render. El código ya permite el dominio de producción; falta confirmar/configurar `CORS_ORIGINS` en el servicio de Render.
 
-- **Render:** la API responde en `https://atlas-tu-enciclopedia-de-animalitos.onrender.com`. Configura `SUPABASE_URL`, `SUPABASE_KEY`, `JWT_SECRET` y `CORS_ORIGINS` en las variables del servicio. Cuando tengas la URL de Vercel, agrega ese origen exacto a `CORS_ORIGINS`, sin `*` ni barra final.
+- **Render:** la API responde en `https://atlas-tu-enciclopedia-de-animalitos.onrender.com`. Configura `SUPABASE_URL`, `SUPABASE_KEY`, `JWT_SECRET` y `CORS_ORIGINS` en las variables del servicio. La preflight actual no devuelve `Access-Control-Allow-Origin`; establece el valor en el dashboard de Render como `https://atlas-tu-enciclopedia-de-animalitos.vercel.app`. Para permitir también desarrollo local, agrega los orígenes localhost separados por comas.
 - **Vercel:** publica la carpeta raíz como sitio estático. `config.js` conserva `localhost:3000` en desarrollo local y usa automáticamente la URL HTTPS de Render en producción. No pongas claves de Supabase ni el JWT secret en el frontend.
-- Cuando estén desplegados, reemplaza los enlaces pendientes de **Demo** por las URLs reales y prueba registro, login y CRUD desde el dominio de Vercel.
+- Prueba registro, login y CRUD desde el dominio de Vercel y confirma que `CORS_ORIGINS` coincide exactamente con el dominio, sin barra final.
 
 ## Seguridad aplicada
 
