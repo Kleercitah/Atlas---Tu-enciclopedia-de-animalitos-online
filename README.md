@@ -5,7 +5,7 @@ ATLAS le sirve a quien explora la biodiversidad para guardar y organizar criatur
 ## Demo
 
 - App: pendiente de despliegue en Vercel
-- API: pendiente de despliegue en Render
+- API: https://atlas-tu-enciclopedia-de-animalitos.onrender.com
 - Cuenta demo local: `atlas.demo@example.test` / `Atlas-Demo-Only-2026!` (cuenta de prueba sin rol admin; cambia o elimina esta cuenta antes de publicar la base de datos)
 
 ## Capturas
@@ -81,10 +81,10 @@ La API queda en `http://localhost:3000`. Para abrir la interfaz, sirve la carpet
 
 ## Despliegue
 
-El despliegue aún está pendiente; no hay URLs activas configuradas en este repo.
+La API está desplegada en Render. Falta desplegar la interfaz en Vercel y completar CORS con su dominio.
 
-- **Render:** crea un Web Service desde `backend`, usa `pnpm install` como build command y `pnpm start` como start command. Configura `SUPABASE_URL`, `SUPABASE_KEY`, `JWT_SECRET`, `CORS_ORIGINS` y, si Render no lo define, `PORT`. `CORS_ORIGINS` debe contener la URL exacta de Vercel, sin `*` y sin barra final.
-- **Vercel:** publica la carpeta raíz como sitio estático. En `config.js`, cambia `window.ATLAS_API_ROOT` a la URL HTTPS de Render. No pongas claves de Supabase ni el JWT secret en el frontend.
+- **Render:** la API responde en `https://atlas-tu-enciclopedia-de-animalitos.onrender.com`. Configura `SUPABASE_URL`, `SUPABASE_KEY`, `JWT_SECRET` y `CORS_ORIGINS` en las variables del servicio. Cuando tengas la URL de Vercel, agrega ese origen exacto a `CORS_ORIGINS`, sin `*` ni barra final.
+- **Vercel:** publica la carpeta raíz como sitio estático. `config.js` conserva `localhost:3000` en desarrollo local y usa automáticamente la URL HTTPS de Render en producción. No pongas claves de Supabase ni el JWT secret en el frontend.
 - Cuando estén desplegados, reemplaza los enlaces pendientes de **Demo** por las URLs reales y prueba registro, login y CRUD desde el dominio de Vercel.
 
 ## Seguridad aplicada
