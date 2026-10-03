@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATLAS · Bestiario Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmo-layer atmo-grad"></div>
+    <div class="atmo-layer atmo-mountains"></div>
+    <div class="atmo-layer atmo-forest-far"></div>
+    <div class="atmo-layer atmo-fog-1"></div>
+    <div class="atmo-layer atmo-forest-mid"></div>
+    <div class="atmo-layer atmo-fog-2"></div>
+    <div class="atmo-layer atmo-forest-near"></div>
+    <div class="atmo-layer atmo-veggie-blur"></div>
+    <div class="atmo-layer atmo-light"></div>
+    <div class="atmo-layer atmo-particles"></div>
+    <div class="atmo-layer atmo-vignette"></div>
+    <div class="atmo-layer atmo-grain"></div>
+  </div>
+
+  <div class="site-branding" aria-hidden="true">
+    <div class="brand-left">
+      <span class="brand-mark"></span>
+      <span class="brand-text">ATLAS</span>
+    </div>
+    <div class="brand-right">
+      <span class="brand-vol">Vol. I — Expedición</span>
+    </div>
+  </div>
+
+  <svg class="bg-mini birds-mini" viewBox="0 0 280 60" aria-hidden="true">
+    <path fill="#0F1F1B" opacity="0.28" d="M10,30 Q18,20 26,30 Q34,20 42,30 Z M80,38 Q86,30 92,38 Q98,30 104,38 Z M160,22 Q168,12 176,22 Q184,12 192,22 Z M230,34 Q236,26 242,34 Q248,26 254,34 Z"/>
+  </svg>
+
+  <main class="screens-root">
+
+    <section class="screen screen-landing active" data-screen="landing">
+      <div class="landing-frame">
+
+        <div class="landing-col landing-col-left">
+          <div class="creature-photo creature-fox">
+            <img class="photo-inner" src="Photo4.jpg" alt="Dos zorros en un paisaje natural" fetchpriority="high" />
+            <div class="photo-atmo"></div>
+            <div class="photo-mask"></div>
+            <div class="photo-shadow"></div>
+          </div>
+        </div>
+
+        <div class="landing-col landing-col-center">
+          <h1 class="atlas-logo"><span class="atlas-word">ATLAS</span></h1>
+
+          <p class="landing-tagline">Descubre. Explora. Colecciona.</p>
+          <p class="landing-description">Construye tu propio Atlas de criaturas del mundo.</p>
+
+          <div class="landing-ctas">
+            <button class="btn btn-primary" data-goto="login">
+              <span class="btn-label">Entrar</span>
+            </button>
+            <button class="btn btn-secondary" data-goto="register">
+              <span class="btn-label">Crear cuenta</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="landing-col landing-col-right">
+          <div class="creature-photo creature-owl">
+            <img class="photo-inner" src="Photo3.jpg" alt="Ciervo entre la vegetación del bosque" />
+            <div class="photo-atmo"></div>
+            <div class="photo-mask mask-right"></div>
+            <div class="photo-shadow"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="screen screen-login" data-screen="login">
+      <div class="auth-split auth-split-login">
+
+        <div class="auth-media auth-media-left">
+          <div class="media-photo photo-wolf">
+            <div class="photo-inner" style="background-image:url('Photo1.jpg')"></div>
+            <div class="media-atmo"></div>
+            <div class="media-mask"></div>
+            <div class="media-veil"></div>
+            <div class="media-content">
+              <div class="media-eyebrow">
+                <span class="eye-dot"></span>
+                <span>Expedición nocturna</span>
+              </div>
+              <h2 class="media-quote">
+                "Hay mil formas<br/>de entrar en un bosque,<br/>pero sólo una de volver."
+              </h2>
+              <div class="media-sign">
+                <span class="sign-bar"></span>
+                <span class="sign-text">— Diario de un naturalista, 1872</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-panel auth-panel-right">
+
+          <button class="auth-back" data-goto="landing" aria-label="Volver a inicio">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Atrás</span>
+          </button>
+
+          <div class="auth-panel-inner">
+
+            <div class="auth-heading">
+              <div class="heading-step">
+                <span class="step-dot"></span>
+                <span class="step-text">Inicio de sesión</span>
+              </div>
+              <h3 class="auth-title">Bienvenido de nuevo,<br/><em>explorador.</em></h3>
+              <p class="auth-subtitle">Continúa tu expedición.</p>
+            </div>
+
+            <form class="auth-form" id="login-form">
+              <div class="field">
+                <label class="field-label" for="login-email">Correo electrónico</label>
+                <div class="field-input">
+                  <input id="login-email" name="email" type="email" placeholder="tu@correo.com" autocomplete="email" required />
+                  <div class="field-underline"></div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="login-password">Contraseña</label>
+                <div class="field-input">
+                  <input id="login-password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required />
+                  <div class="field-underline"></div>
+                </div>
+              </div>
+
+              <p class="auth-feedback" id="login-feedback" role="status" aria-live="polite" hidden></p>
+
+              <button type="submit" class="btn btn-primary btn-auth-main">
+                <span class="btn-label">Entrar al Atlas</span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </form>
+
+            <div class="auth-footnote">
+              <span>¿No tienes una cuenta?</span>
+              <button class="foot-link" data-goto="register">Crear cuenta</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="screen screen-register" data-screen="register">
+      <div class="auth-split auth-split-register">
+
+        <div class="auth-panel auth-panel-left">
+
+          <button class="auth-back" data-goto="landing" aria-label="Volver a inicio">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Atrás</span>
+          </button>
+
+          <div class="auth-panel-inner">
+
+            <div class="auth-heading">
+              <div class="heading-step">
+                <span class="step-dot"></span>
+                <span class="step-text">Nueva expedición</span>
+              </div>
+              <h3 class="auth-title">Comienza tu<br/><em>expedición.</em></h3>
+              <p class="auth-subtitle">Crea tu perfil y empieza a descubrir criaturas.</p>
+            </div>
+
+            <form class="auth-form" id="register-form">
+              <div class="field">
+                <label class="field-label" for="register-name">Nombre</label>
+                <div class="field-input">
+                  <input id="register-name" name="name" type="text" placeholder="Ej. Elisa Marchant" autocomplete="name" required />
+                  <div class="field-underline"></div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="register-email">Correo electrónico</label>
+                <div class="field-input">
+                  <input id="register-email" name="email" type="email" placeholder="tu@correo.com" autocomplete="email" required />
+                  <div class="field-underline"></div>
+                </div>
+              </div>
+
+              <div class="field-pair">
+                <div class="field">
+                  <label class="field-label" for="register-password">Contraseña</label>
+                  <div class="field-input">
+                    <input id="register-password" name="password" type="password" placeholder="••••••••" autocomplete="new-password" minlength="8" required />
+                    <div class="field-underline"></div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="register-password-confirm">Confirmar contraseña</label>
+                  <div class="field-input">
+                    <input id="register-password-confirm" name="password_confirmation" type="password" placeholder="••••••••" autocomplete="new-password" minlength="8" required />
+                    <div class="field-underline"></div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="auth-feedback" id="register-feedback" role="status" aria-live="polite" hidden></p>
+
+              <button type="submit" class="btn btn-primary btn-auth-main">
+                <span class="btn-label">Crear mi Atlas</span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2L14 8L20 9L15 14L16 20L12 17L8 20L9 14L4 9L10 8L12 2Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </form>
+
+            <div class="auth-footnote">
+              <span>¿Ya tienes una cuenta?</span>
+              <button class="foot-link" data-goto="login">Entrar</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="auth-media auth-media-right">
+          <div class="media-photo photo-deer">
+            <div class="photo-inner" style="background-image:url('Photo2.jpg')"></div>
+            <div class="media-atmo"></div>
+            <div class="media-mask mask-right"></div>
+            <div class="media-veil"></div>
+            <div class="media-content content-right">
+              <div class="media-eyebrow">
+                <span class="eye-dot"></span>
+                <span>Capítulo inicial</span>
+              </div>
+              <h2 class="media-quote">
+                "Cada criatura<br/>es un secreto<br/>que el bosque guarda."
+              </h2>
+              <div class="media-sign">
+                <span class="sign-bar"></span>
+                <span class="sign-text">— Archivo Atlas · Sección I</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div class="site-footer-mark" aria-hidden="true">
+    <span class="fmark-line"></span>
+    <span class="fmark-text">NATURA · INCOGNITA · SEMPER</span>
+    <span class="fmark-line"></span>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

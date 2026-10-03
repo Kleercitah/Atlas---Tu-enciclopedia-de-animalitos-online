@@ -1,0 +1,1 @@
+window.ATLAS_API_ROOT = window.ATLAS_API_ROOT || 'http://localhost:3000';

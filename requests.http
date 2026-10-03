@@ -1,0 +1,96 @@
+@api = http://localhost:3000
+@testPassword = Atlas-Demo-Only-2026!
+
+### Salud de la API
+GET {{api}}/
+
+### Registro de cuenta nueva
+# @name register
+POST {{api}}/auth/registro
+Content-Type: application/json
+
+{
+  "name": "Explorador de prueba",
+  "email": "atlas.{{$guid}}@example.test",
+  "password": "{{testPassword}}"
+}
+
+### Login y obtención del JWT
+# @name login
+POST {{api}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{register.response.body.user.email}}",
+  "password": "{{testPassword}}"
+}
+
+### Crear descubrimiento
+# @name createDiscovery
+POST {{api}}/api/discoveries
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "external_id": 6930,
+  "notes": "Registro creado desde REST Client."
+}
+
+### Listar descubrimientos propios
+GET {{api}}/api/discoveries
+Authorization: Bearer {{login.response.body.token}}
+
+### Registrar apertura de una ficha para las métricas
+POST {{api}}/api/discoveries/views
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "external_id": 6930
+}
+
+### Actualizar el descubrimiento creado
+PUT {{api}}/api/discoveries/{{createDiscovery.response.body.id}}
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "favorite": true,
+  "status": "investigando",
+  "notes": "Actualizado desde REST Client."
+}
+
+### Eliminar el descubrimiento creado
+DELETE {{api}}/api/discoveries/{{createDiscovery.response.body.id}}
+Authorization: Bearer {{login.response.body.token}}
+
+### Ruta admin (403 para la cuenta normal)
+GET {{api}}/api/admin/users
+Authorization: Bearer {{login.response.body.token}}
+
+### Métricas admin (403 para la cuenta normal)
+GET {{api}}/api/admin/metrics
+Authorization: Bearer {{login.response.body.token}}
+
+### Falla esperada: intento de inyección (400)
+POST {{api}}/api/discoveries
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "external_id": "6930; DROP TABLE users;--",
+  "notes": "El valor debe rechazarse antes de consultar la base."
+}
+
+### Falla esperada: ruta privada sin token (401)
+GET {{api}}/api/discoveries
+
+### Falla esperada: correo inválido (400)
+POST {{api}}/auth/registro
+Content-Type: application/json
+
+{
+  "name": "Sin correo válido",
+  "email": "no-es-un-correo",
+  "password": "{{testPassword}}"
+}
